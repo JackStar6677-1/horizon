@@ -2248,7 +2248,10 @@ mod tests {
     #[test]
     fn login_reason_array_component_preserves_translate_key() {
         let mut lang = Language::default();
-        lang.insert("multiplayer.disconnect.kicked".into(), "Kicked by an operator".into());
+        lang.insert(
+            "multiplayer.disconnect.kicked".into(),
+            "Kicked by an operator".into(),
+        );
         let raw = r#"[{"translate":"multiplayer.disconnect.kicked"},{"text":": Maintenance"}]"#;
         let reason = Reason::component(raw, &lang);
         assert_eq!(reason.text, "Kicked by an operator: Maintenance");
